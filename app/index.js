@@ -1,10 +1,10 @@
-import "./index.scss";
+import "./index.scss"
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import React from "react"
+import ReactDOM from "react-dom"
+import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom"
 
-import HomeScene from "./scenes/home";
+import HomeScene from "./scenes/home"
 
 function App() {
     return (
@@ -14,7 +14,7 @@ function App() {
                 <Redirect from="/" to="/home" />
             </Switch>
         </Router>
-    );
+    )
 }
 
-ReactDOM.render(<App />, document.getElementById("root")); 
+ReactDOM.render(<App />, document.getElementById("root"))

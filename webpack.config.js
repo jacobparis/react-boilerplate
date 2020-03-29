@@ -1,15 +1,16 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
-const resolve = require("path").resolve;
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+const resolve = require('path').resolve
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 module.exports = {
-    mode: "development",
+    mode: 'development',
     entry: resolve(__dirname, 'app/index.js'),
     output: {
         path: resolve(__dirname, 'dist'),
         filename: '[name].[contenthash].js',
-        publicPath: "/",
+        publicPath: '/',
     },
     module: {
         rules: [
@@ -20,16 +21,19 @@ module.exports = {
                         loader: 'babel-loader',
                         query: {
                             presets: [
-                                ["@babel/preset-env", {
+                                ['@babel/preset-env', {
                                     useBuiltIns: 'entry',
                                     corejs: '3',
-                                    targets: "> 1%, not dead"
+                                    targets: '> 1%, not dead',
                                 }],
-                                ["@babel/preset-react"]
-                            ]
-                        }
-                    }
-                ]
+                                ['@babel/preset-react'],
+                            ],
+                            plugins: [
+                                '@babel/plugin-proposal-optional-chaining',
+                            ],
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(png|jpg|gif)$/,
@@ -37,27 +41,27 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 8192
-                        }
-                    }
-                ]
+                            limit: 8192,
+                        },
+                    },
+                ],
             }, {
-                test: /\.scss$/,
+                test: /\.(css|scss)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader',
                 ],
-            }
-        ]
+            },
+        ],
     },
     plugins: [
         new webpack.HashedModuleIdsPlugin(),
         new HtmlWebpackPlugin({
-            template: './app/index.html'
+            template: './app/index.html',
         }),
-        new MiniCssExtractPlugin({ filename: '[contenthash].css' })
-        //new BundleAnalyzerPlugin()
+        new MiniCssExtractPlugin({ filename: '[contenthash].css' }),
+        // new BundleAnalyzerPlugin()
     ],
     optimization: {
         runtimeChunk: 'single',
@@ -71,13 +75,13 @@ module.exports = {
                     name(module) {
                         // get the name. E.g. node_modules/packageName/not/this/part.js
                         // or node_modules/packageName
-                        const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                        const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
 
                         // npm package names are URL-safe, but some servers don't like @ symbols
-                        return `npm.${packageName.replace('@', '')}`;
+                        return `npm.${packageName.replace('@', '')}`
                     },
                 },
             },
-        }
-    }
+        },
+    },
 }
