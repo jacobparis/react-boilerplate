@@ -6,9 +6,9 @@ import { AppMachine } from '../machines/AppMachine'
 export default function HomeScene() {
     const [state, send] = useMachine(AppMachine.withContext({
         lenders: []
-    }).withConfig({
-
-    }), { devTools: true })
+    }), {
+        devTools: true
+    })
 
     return (
         <h1> Home Scene </h1>

@@ -1,6 +1,6 @@
 import { Machine, assign } from 'xstate'
 
-export const StripeMachine = Machine({
+export const AppMachine = Machine({
   id: 'fetch',
   initial: 'idle',
   context: {
@@ -32,4 +32,4 @@ export const StripeMachine = Machine({
       }
     }
   }
-});
+})
