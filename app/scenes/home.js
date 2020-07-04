@@ -1,16 +1,12 @@
-import * as React from "react"
+import * as React from 'react'
 
 import { useMachine } from '@xstate/react'
 import { AppMachine } from '../machines/AppMachine'
 
 export default function HomeScene() {
-    const [state, send] = useMachine(AppMachine.withContext({
-        lenders: []
-    }), {
-        devTools: true
-    })
+  const [state, send] = useMachine(AppMachine.withContext({}), {
+    devTools: true,
+  })
 
-    return (
-        <h1> Home Scene </h1>
-    )
+  return <h1> Home Scene </h1>
 }

@@ -1,6 +1,6 @@
 {
-  "parser": "babel-eslint",
   "parserOptions": {
+    "parser": "babel-eslint",
     "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
@@ -13,10 +13,14 @@
     "browser": true
   },
   "extends": [
+    "plugin:prettier/recommended",
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
   ],
-  "plugins": ["react"],
+  "plugins": [
+    "react"
+  ],
   "rules": {
     "semi": [
       2,

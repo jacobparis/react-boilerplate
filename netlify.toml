@@ -7,11 +7,17 @@
 [build]
   command = "npm run build"
   publish = "dist/"
-  function = "functions" # keep this committed in the repo
-  # functions = "dist/api" # keep this active in dev
+  function = "functions"
 
 [[headers]]
   for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Headers = "Content-Type"
+
+
+[dev]
+  framework = "#custom"
+  command = "npm run serve:webpack"
+  targetPort = 8080
+  autoLaunch = true
